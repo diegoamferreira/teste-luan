@@ -3,13 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
 <div>
-    {{pk}}
+    {{ pk }}
 </div>
 <div>
-    EU SOU O {{ user }}
+    {#    EU SOU O {{ user }}#}
+    <div>
+        {{ evento.titulo }}
+    </div>
+</div>
+<div>
+
+    <table>
+        <tr>
+            <th>Titulo</th>
+            <th>Descrição</th>
+            <th>Data Evento</th>
+            <th>Salario</th>
+            <th>Habilitado</th>
+            <th>Data Criação</th>
+            <th>Usuário</th>
+        </tr>
+        {% for evento in todos_eventos %}
+            <tr>
+                <td>{{ evento.titulo }}</td>
+                <td>{{ evento.descricao }}</td>
+                <td>{{ evento.data_evento }}</td>
+                <td>{{ evento.salario }}</td>
+                <td>{{ evento.habilitado }}</td>
+                <td>{{ evento.data_criacao }}</td>
+                <td>{{ evento.usuario }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{{ teste }}
+
+
 </div>
 </body>
 </html>
