@@ -1,1 +1,15 @@
-olá
+{% extends 'home.html' %}
+
+{%block content %}
+  <div class=card">
+    <div class="card-body">
+      <h4>{{titulo_da_pagina}}</h4>
+      <hr>
+      <form method ="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit" class="btn btn-sucess" href="{% url 'abra'%}">{{nome_botao}}</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
