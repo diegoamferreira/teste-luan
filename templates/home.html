@@ -1,52 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br"
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-        }
-    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
 <body>
-<div>
-    {{ pk }}
-</div>
-<div>
-    {#    EU SOU O {{ user }}#}
-    <div>
-        {{ evento.titulo }}
-    </div>
-</div>
-<div>
-
-    <table>
-        <tr>
-            <th>Titulo</th>
-            <th>Descrição</th>
-            <th>Data Evento</th>
-            <th>Salario</th>
-            <th>Habilitado</th>
-            <th>Data Criação</th>
-            <th>Usuário</th>
-        </tr>
-        {% for evento in todos_eventos %}
-            <tr>
-                <td>{{ evento.titulo }}</td>
-                <td>{{ evento.descricao }}</td>
-                <td>{{ evento.data_evento }}</td>
-                <td>{{ evento.salario }}</td>
-                <td>{{ evento.habilitado }}</td>
-                <td>{{ evento.data_criacao }}</td>
-                <td>{{ evento.usuario }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-
-{{ teste }}
 
 
-</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+
 </body>
-</html>
+
+{% block content %}
+
+    <div class=""card">
+        <div class="="card-body">
+            <h4>REGISTROS</h4>
+            <hr>
+            <a class="btn btn-sucess" href="{% url 'abra'%}">Adicionar</a>
+            <table class="table table-striped">
+
+                    <tr>
+                        <th>titulo</th>
+                        <th>descricao</th>
+                        <th>data_evento</th>
+                        <th>salario</th>
+                        <th>habilitado</th>
+                        <th>data_criacao</th>
+                        <th>usuario</th>
+                        <th>ACOES</th>
+                    </tr>
+
+                    {% for evento in todos_eventos %}
+                         <tr>
+                            <td>{{ evento.titulo }}</td>
+                            <td>{{ evento.descricao }}</td>
+                            <td>{{ evento.data_evento }}</td>
+                            <td>{{ evento.salario }}</td>
+                            <td>{{ evento.habilitado }}</td>
+                            <td>{{ evento.data_criacao }}</td>
+                            <td>{{ evento.usuario }}</td>
+                            <td>
+                                <a href="{%url 'update_evento' pk=evento.pk %}" class="btn btn-warnig">Editar</a>
+                                <a href="{%url 'delete_evento' pk=evento.pk %}" class="btn btn-danger">Excluir</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+{% endblock%}
+
+            </table>
+        </div>
+    </div>
+
+
+
