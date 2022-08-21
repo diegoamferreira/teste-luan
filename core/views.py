@@ -72,3 +72,10 @@ def evento_upd (request,pk):
         'nome_botao': "Editar"
     }
     return render(request,'index.html',context)
+
+#teste 1
+#teste 1
+#teste 1
+#teste 1
+#teste 1
+#teste 1gi
