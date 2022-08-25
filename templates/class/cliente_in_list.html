@@ -1,0 +1,11 @@
+<ul>
+    <li><a href = "{% url 'class:list_detail' pk=cliente.id %}">Visualizar cliente<a/>--------------Titulo: {{ cliente.titulo }}
+</li>
+    <li><a href = "{% url 'class:list_delete' pk=cliente.id %}">Deletar cliente<a/>------------------{{ cliente.salario}}
+</li>
+    <li><a href = "{% url 'class:list_update' pk=cliente.id %}">Alterar cliente<a/>------------------{{ cliente.data_evento}}
+</li>
+    <li>-------------------------------------{{ cliente.descricao}}</li>
+    <li>-------------------------------------{{ cliente.habilitado}}</li>
+    <li>-------------------------------------{{ cliente.usuario}}</li>
+    </ul>
