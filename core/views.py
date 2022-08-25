@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, ListView
 
@@ -21,11 +22,20 @@ class ListHomeView(ListView):
     context_object_name = 'todos_eventos'
 
 def evento (request):
-    eventos = Eventos.objetos.all()
+    evento_list = Eventos.objects.all()
+    page = request.GET.get('page', 1)
+    paginator = Paginator(evento_list, 2)
+    print('estou aqui')
+    try:
+        eventos = paginator.page(page)
+    except PageNotAnInteger:
+        eventos = paginator.page(1)
+    except EmptyPage:
+        eventos = paginator.page(paginator.num_pages)
     context = {
-        'eventos': eventos
+        'page_obj': eventos
     }
-    return render(request,'templates.home.html', context)
+    return render(request,'home.html', context)
 
 def besta(request):
     todos_eventos = Eventos.objects.all()
@@ -73,9 +83,15 @@ def evento_upd (request,pk):
     }
     return render(request,'index.html',context)
 
-#teste 1
-#teste 1
-#teste 1
-#teste 1
-#teste 1
-#teste 1gi
+def evento_view (request, pk):
+    evento =Eventos.objects.get(pk=pk)
+
+
+
+    context = {
+        'evento': evento,
+        'titulo_da_pagina': 'Visualizar',
+        'nome_botao': "Visualisar"
+    }
+    return render(request,'preview.html',context)
+
