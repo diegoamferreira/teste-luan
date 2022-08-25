@@ -8,7 +8,7 @@ from .views import besta, HomeView, ListHomeView #HomeView
 
 urlpatterns = [
     #path('', login_required(HomeView.as_view()), name='home'),
-    path('', login_required(views.evento), name='home'),
+    path('', views.evento, name='home'),
     path('abra/', views.besta, name='todos_eventos'),
     path('<int:pk>/delete', views.evento_del, name='delete_evento'),
     path('l', views.evento_add, name='abra'),
