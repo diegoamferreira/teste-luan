@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 #Create your models here.
@@ -58,12 +59,20 @@ class Resource(models.Model):
 
 
 class Team(models.Model):
+    CARGOCHOICES=(
+        ("1","Area de programação"),
+        ("2","Area de direito"),
+        ("3","Area de diretoria"),
+        ("4","Area de almoxerifado"),
+        ("5","Area de farmácia"),
+    )
     nome = models.CharField(max_length=100)
-    cargo = models.TextField(blank=True, null=True)
+    cargo = models.CharField(choices=CARGOCHOICES)
     descricao = models.TextField(max_length=100)
     facebook_url = models.EmailField(blank=True, null=True)
     twitter_url = models.EmailField(blank=True, null=True)
     instagran_url = models.EmailField(blank=True, null=True)
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
     class Meta:
         verbose_name = 'Equipe'
         verbose_name_plural = 'Equipes'
@@ -75,6 +84,7 @@ class Plan(models.Model):
     preco = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
     titulo = models.TextField(max_length=100,blank=True, null=True)
     icone = models.CharField(max_length=100)
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Plano'
@@ -88,8 +98,10 @@ class Speech(models.Model):
     imagem = models.ImageField( blank=True, null=True)
     nome = models.TextField(max_length=100,blank=True, null=True)
     cargo = models.CharField(max_length=100)
-    descricao = models.TextField(max_length=100)
-    nota = models.DecimalField(max_length=1)
+    menssagem = models.TextField(max_length=100)
+    nota = models.SmallIntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
+    nota2 = models.PositiveSmallIntegerField(validators=[MaxValueValidator(5)],default=0)
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Depoimento'
@@ -102,7 +114,8 @@ class Contact(models.Model):
     nome = models.TextField(max_length=100,blank=True, null=True)
     email = models.EmailField(max_length=100,blank=True, null=True)
     assunto = models.TextField(max_length=100)
-    menssagem = models.TextField(max_length=100)
+    mensagem = models.TextField(max_length=100)
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Contato'
