@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'core',
     'class',
+    'fusion',
 
 
     # 3rd party apps

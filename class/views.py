@@ -29,8 +29,7 @@ class ClienteUpdate(UpdateView):
    #template_name = 'create.html'
    fields = '__all__'
 
-class PaginaInicial(TemplateView):
-   template_name = 'fusion.html'
+
 
 
 

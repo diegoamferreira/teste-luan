@@ -23,5 +23,6 @@ urlpatterns = [
     path('', include('core.urls')),
     path('clientes/', include('class.urls')),
     path('accounts/', include('allauth.urls')),
+    path('fusion/', include('fusion.urls')),
 
 ]
