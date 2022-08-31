@@ -60,7 +60,7 @@ def evento_add (request):
         'nome_botao': "Criar"
     }
 
-    return render(request,'index.html', context)
+    return render(request,'index.js', context)
 
 def evento_del (request, pk):
     evento = Eventos.objects.get(pk=pk)
@@ -81,7 +81,7 @@ def evento_upd (request,pk):
         'titulo_da_pagina': 'Editar autor',
         'nome_botao': "Editar"
     }
-    return render(request,'index.html',context)
+    return render(request,'index.js',context)
 
 def evento_view (request, pk):
     evento =Eventos.objects.get(pk=pk)

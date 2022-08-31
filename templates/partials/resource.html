@@ -1,0 +1,15 @@
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+    <div class="content-left">
+        <div class="box-item wow fadeInLeft" data-wow-delay="0.3s">
+                <span class="icon">
+                  <i class="{{ resource.icone }}"></i>
+                </span>
+                <div class="text  texto-preto">
+                    <h3><a href="{% url 'site:resource_detail' pk=resource.id %}">{{ resource.titulo }}</a></h3>
+                    <!--                <h4>{{ resource.titulo }}</h4>-->
+                    <p>{{ resource.descricao }}</p>
+            </div>
+        </div>
+
+    </div>
+</div>

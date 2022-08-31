@@ -1,0 +1,104 @@
+{% load static %}
+<h3>Detalhes do Plano </h3>
+<br>
+<p>Preço: {{object.preco}}</p>
+<br>
+<p>Titulo: {{ object.titulo}}</p>
+<p>Icone: {{ object.icone}}</p>
+<p>Empresa: {{ object.empresa}}</p>
+<html>
+
+
+<body>
+
+<h2>Qual o horário agora ?</h2>
+
+<button type="button"
+        onclick="document.getElementById('demo').innerHTML = Date()">
+    Click aqui para saber
+</button>
+
+<p id="demo"></p>
+
+</body>
+</html>
+
+<html>
+<body>
+
+<h3>Demonstração de um Checkbox</h3>
+
+Checkbox: <input type="checkbox" id="myCheck">
+
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myCheck");
+  x.checked = true;
+}
+
+
+
+
+
+
+</script>
+
+</body>
+
+</html>
+<html>
+<body>
+
+<button onclick="myFunction()">Try it</button>
+
+<script>
+function myFunction() {
+  var x = document.createElement("INPUT");
+  x.setAttribute("type", "checkbox");
+  document.body.appendChild(x);
+}
+
+
+
+
+
+
+</script>
+
+</body>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS</title>
+    <style>
+        body{
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+<h1>Teste JS</h1>
+<p id="texto"></p>
+<p>
+    <script>
+            document.write('document.<u>write</u>' );
+            document.write(6+3 );
+            console.log(" aqui um console.log");
+            var a =1; var b = 2; var c = a+b; console.log(c);
+
+    </script>
+</p>
+<script src="{% static 'js/index.js' %}"></script>
+<script>
+<!--        alert('olá');-->
+
+</script>
+</body>
+</html>

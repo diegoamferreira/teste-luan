@@ -1,0 +1,12 @@
+<h3>Detalhes do Time </h3>
+<br>
+    <p>Usuario: {{object.empresa.usuario}}</p>
+<br>
+    <p>Cargo: {{ object.get_cargo_display}}</p>
+    <p>Nome: {{ object.nome}}</p>
+    <p>descrição: {{ object.descricao}}</p>
+    <p>Facebook: {{ object.facebook_url}}</p>
+    <p>Twitter: {{ object.twitter_url}}</p>
+    <p>instagran: {{ object.instagran_url}}</p>
+    <p>imagem: {{ object.imagem.url}}</p>
+<img src="{{object.imagem.url}}">
