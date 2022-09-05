@@ -1,0 +1,19 @@
+.img-fix {
+    height:200px;
+    width:200px;
+    object-fit:cover;
+    object-position: 50% 70%;
+
+
+}
+
+.img-speech img {
+    width: 75px !important;
+    height: 75px;
+    object-fit: cover;
+    }
+
+.texto-preto h3 a {
+    font-size: 16px;
+    color: #585b60;
+}

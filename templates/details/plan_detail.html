@@ -1,0 +1,96 @@
+{% load static %}
+<h3>Detalhes do Plano </h3>
+<br>
+<p>Preço: {{object.preco}}</p>
+<br>
+<p>Titulo: {{ object.titulo}}</p>
+<p>Icone: {{ object.icone}}</p>
+<p>Empresa: {{ object.empresa}}</p>
+<html>
+
+
+<body>
+
+<h2>Qual o horário agora ?</h2>
+
+<button type="button"
+        onclick="document.getElementById('demo').innerHTML = Date()">
+    Click aqui para saber
+</button>
+
+<p id="demo"></p>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS</title>
+    <style>
+        body{
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+<h1>Teste JS</h1>
+<p id="texto"></p>
+<p id="texto1"></p>
+<p>
+    <script>
+            document.write('document.<u>write</u>' );
+            document.write(6+3 );
+            console.log(" aqui um console.log");
+            var a =1; var b = 2; var c = a+b; console.log(c);
+
+    </script>
+</p>
+<script src="{% static 'js/index.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> <!--importar biblioteca-->
+<script>
+<!--        alert('olá');-->
+</script>
+    <div >
+
+    <p id="teste1"></p>
+
+    <button onclick="eventoClick()">Clique aqui</button> <br>
+    <button ondblclick="mudaCor()">Clique 2x aqui</button> <br>
+    <div id="teste" onmousemove="viraTeste1()" onmouseout= "viraPreto()"onmouseover= "viraVermelho()"
+         onmousedown="alert('clicou no quadrado')" onmouseup="alert('soltou o click')"
+     style="margin:auto auto;width:80%; height: 200px; background: blue">
+    </div>
+    </div>
+<!--    <input onfocus="limpaTexto()" id="test" style="padding:80px; font-size:40px;">-->
+<!--           type="teste"placeholder="Digite alguma coisa" value="Seu nome aqui">-->
+<!--            <button onclick="verificar()" style="padding: 70px">Verificar</button>-->
+
+
+    <h1> JSON </h1>
+
+    <center>
+        <input id="cep" type="text" placeholder="Digite o seu CEP">
+        <button onclick="buscarCEP()">Buscar</button>
+        <p id="cep1"></p>
+    </center>
+
+</body>
+</html>

@@ -10,16 +10,17 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-<input type="submit" onclick="location.href = '{% url 'class:urls' %}'"value="voltar">
-<br />
-<br />
+<input type="submit" onclick="location.href = '{% url 'class:urls' %}'" value="voltar">
+<br/>
+<br/>
 
 Titulo: {{ object.titulo }}
-<p>Descrição: {{ object.descricao}}
-<p>Data do Evento: {{ object.data_evento}}
-<p>Salário: {{ object.salario}}
-<p>Habilitado: {{ object.habilitado}}
-<p>Data da Criação: {{ object.data_criacao}}
-<p>Usuário: {{ object.usuario}}
+    <p>Descrição: {{ object.descricao}}</p>
+    <p>Data do Evento: {{ object.data_evento}}</p>
+    <p>Salário: {{ object.salario}}</p>
+    <p>Habilitado: {{ object.habilitado}}</p>
+    <p>Data da Criação: {{ object.data_criacao}}</p>
+    <p>Usuário: {{ object.usuario}}</p>
+
 </body>
 </html>
