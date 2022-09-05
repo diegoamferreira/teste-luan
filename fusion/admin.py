@@ -7,7 +7,7 @@ from .models import Empresa, Service, Resource, Team, Plan, Speech, Contact, Pho
 #from luan_teste.admin_site import custom_admin_site
 
 
-@admin.register(Empresa,Resource,Team,Speech,Contact,Phone)
+@admin.register(Empresa,Resource,Speech,Contact,Phone)
 class FusionAdmin(admin.ModelAdmin):
       pass
 
@@ -36,5 +36,9 @@ class ServiceAdmin(admin.ModelAdmin):
 class ServiceAdmin(admin.ModelAdmin):
       list_display = ["id","icone"]
       list_editable = ["icone"]
+
+@admin.register(Team)
+class ServiceAdmin(admin.ModelAdmin):
+      list_filter = ["experiencia"]
 
 

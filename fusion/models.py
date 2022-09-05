@@ -70,6 +70,7 @@ class Team(models.Model):
         ("5", "Area de farmácia"),
     )
     imagem = models.ImageField(blank=True, null=True, upload_to='team/')
+    experiencia = models.DecimalField(max_digits=6, decimal_places=0, default=0)
     nome = models.CharField(max_length=100)
     cargo = models.CharField(choices=CARGOCHOICES, max_length=2)
     descricao = models.TextField(max_length=100)
@@ -133,7 +134,7 @@ class Contact(models.Model):
 
 class Phone(models.Model):
     nome = models.CharField(max_length=100, blank=True, null=True)
-    telefone = models.DecimalField(max_digits=11, decimal_places=0, blank=True, null=True)
+    telefone = models.CharField(max_length=11, blank=True, null=True)
 
 
 

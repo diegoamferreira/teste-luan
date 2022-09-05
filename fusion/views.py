@@ -1,17 +1,29 @@
+import random
+
 from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, CreateView, DetailView, ListView
-from .models import Service, Resource, Team, Plan, Speech, Contact,Phone
+from .models import Service, Resource, Team, Plan, Speech, Contact, Phone
 from .forms import ContactForm
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class PaginaInicial(TemplateView):
     template_name = 'fusion.html'
 
+    # def post(self, *args,**kwargs):
+    #     print(dir(self.request.POST.values()))
+    #     print(list(self.request.POST.values()))
+    #     return HttpResponse(status=200,content="recebido")
+
     def get_context_data(self, **kwargs):
+        # print(self.request.POST)
+        sel_experiencia = self.request.GET.get("experiencia",0)
         user = self.request.user
         empresa = user.empresa
         context = super(PaginaInicial, self).get_context_data()
@@ -23,7 +35,7 @@ class PaginaInicial(TemplateView):
         context["resources"] = resources
         #            teams = Team.objects.all()
         #            context["teams"] = teams
-        teams = Team.objects.filter(empresa=empresa)
+        teams = Team.objects.filter(empresa=empresa, experiencia__gte=sel_experiencia)
         context["teams"] = teams
         plans = Plan.objects.filter(empresa=empresa)
         context["plans"] = plans
@@ -31,12 +43,14 @@ class PaginaInicial(TemplateView):
         context["speechs"] = speechs
         form = ContactForm
         context["form"] = form
+        context["sel_experiencia"] = sel_experiencia
+        # context["tola"] = "god"
+        # context["berinha"] = random.randint(5,15)
         return context
 
 
 class Service_1(TemplateView):
     template_name = 'partials/service1.html'
-
 
 class ContactCreate(CreateView):
     model = Contact
@@ -66,6 +80,7 @@ class ServiceDetail(DetailView):
             return HttpResponse(status=401, content="Voce não tem acesso a esse produto")
         return super().get(self, request, *args, **kwargs)
 
+
 class ResourceDetail(DetailView):
     model = Resource
     template_name = 'details/resource_detail.html'
@@ -78,6 +93,7 @@ class ResourceDetail(DetailView):
         if usuario != usuario_resource:
             return HttpResponse(status=401, content="Voce não tem acesso a esse produto")
         return super().get(self, request, *args, **kwargs)
+
 
 class TeamDetail(DetailView):
     model = Team
@@ -92,6 +108,7 @@ class TeamDetail(DetailView):
             return HttpResponse(status=401, content="Voce não tem acesso a essa conta")
         return super().get(self, request, *args, **kwargs)
 
+
 class SpeechDetail(DetailView):
     model = Speech
     template_name = 'details/speech_detail.html'
@@ -104,6 +121,7 @@ class SpeechDetail(DetailView):
         if usuario != usuario_speech:
             return HttpResponse(status=401, content="Voce não tem acesso a essa conta")
         return super().get(self, request, *args, **kwargs)
+
 
 class PlanDetail(DetailView):
     model = Plan
@@ -118,7 +136,8 @@ class PlanDetail(DetailView):
             return HttpResponse(status=401, content="Voce não tem acesso a essa conta")
         return super().get(self, request, *args, **kwargs)
 
+
 class PhoneList(ListView):
-   model = Phone
-   template_name ='partials/phone.html'
-   paginate_by = 3
+    model = Phone
+    template_name = 'partials/phone.html'
+    paginate_by = 3

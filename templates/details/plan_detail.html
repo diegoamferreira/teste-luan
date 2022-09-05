@@ -23,41 +23,8 @@
 </body>
 </html>
 
-<html>
-<body>
-
-<h3>Demonstração de um Checkbox</h3>
-
-Checkbox: <input type="checkbox" id="myCheck">
 
 
-<script>
-function myFunction() {
-  var x = document.getElementById("myCheck");
-  x.checked = true;
-}
-
-
-
-
-
-
-</script>
-
-</body>
-
-</html>
-<html>
-<body>
-
-<button onclick="myFunction()">Try it</button>
-
-<script>
-function myFunction() {
-  var x = document.createElement("INPUT");
-  x.setAttribute("type", "checkbox");
-  document.body.appendChild(x);
-}
 
 
 
@@ -86,6 +53,7 @@ function myFunction() {
 <body>
 <h1>Teste JS</h1>
 <p id="texto"></p>
+<p id="texto1"></p>
 <p>
     <script>
             document.write('document.<u>write</u>' );
@@ -96,9 +64,33 @@ function myFunction() {
     </script>
 </p>
 <script src="{% static 'js/index.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> <!--importar biblioteca-->
 <script>
 <!--        alert('olá');-->
-
 </script>
+    <div >
+
+    <p id="teste1"></p>
+
+    <button onclick="eventoClick()">Clique aqui</button> <br>
+    <button ondblclick="mudaCor()">Clique 2x aqui</button> <br>
+    <div id="teste" onmousemove="viraTeste1()" onmouseout= "viraPreto()"onmouseover= "viraVermelho()"
+         onmousedown="alert('clicou no quadrado')" onmouseup="alert('soltou o click')"
+     style="margin:auto auto;width:80%; height: 200px; background: blue">
+    </div>
+    </div>
+<!--    <input onfocus="limpaTexto()" id="test" style="padding:80px; font-size:40px;">-->
+<!--           type="teste"placeholder="Digite alguma coisa" value="Seu nome aqui">-->
+<!--            <button onclick="verificar()" style="padding: 70px">Verificar</button>-->
+
+
+    <h1> JSON </h1>
+
+    <center>
+        <input id="cep" type="text" placeholder="Digite o seu CEP">
+        <button onclick="buscarCEP()">Buscar</button>
+        <p id="cep1"></p>
+    </center>
+
 </body>
 </html>
