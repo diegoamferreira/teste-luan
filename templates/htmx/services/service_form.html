@@ -1,0 +1,46 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle">Criando Serviço</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <form class="row gy-1 pt-75"
+          hx-post="{% url 'service_create' %}"
+          hx-target="#ServiceBody"
+          hx-swap="afterbegin"
+    >
+        {% csrf_token %}
+
+        <div class="col-12">
+            <label class="form-label" for="id_marcas">Titulo</label>
+            {{ form.titulo }}
+        </div>
+        <div class="col-12">
+            <label class="form-label" for="id_marcas">Descrição</label>
+            {{ form.descricao }}
+        </div>
+        <div class="col-12">
+            <label class="form-label" for="id_marcas">Ícone</label>
+            {{ form.icone }}
+        </div>
+        <div class="col-12">
+            <label class="form-label" for="id_marcas">Empresa</label>
+            {{ form.empresa }}
+        </div>
+
+        <div class="modal-footer">
+            <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+        </div>
+
+    </form>
+</div>
+
+
+<script>
+    $('form').on('submit', function (e) {
+        $('#addModal').modal('toggle')
+    });
+</script>

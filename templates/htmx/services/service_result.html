@@ -1,0 +1,44 @@
+<tr>
+    <td>{{ object.id }}</td>
+    <td>{{ object.titulo }}</td>
+    <td>{{ object.descricao }}</td>
+    <td>{{ object.icone }}</td>
+    <td>{{ object.empresa }}</td>
+    <td>{{ object.empresa.usuario }}</td>
+    <td>
+        <button type="button"
+                hx-delete="{% url 'service_delete' object.pk %}"
+                hx-confirm="Tem certeza que deseja deletar o serviço?"
+                hx-target="closest tr"
+        >
+            DELETAR
+        </button>
+
+
+        {#        <div class="services-item">#}
+        {#            <div class="icon"#}
+        {#                 data-bs-toggle="tooltip"#}
+        {#                 data-bs-original-title="Deletar Serviço"#}
+        {#                 hx-delete="{% url 'service_delete' object.pk %}"#}
+        {#                 hx-trigger='confirmed'#}
+        {#                 hx-target="closest tr"#}
+        {#                 _="on click#}
+        {#                         call Swal.fire({#}
+        {#                            title: 'Você tem certeza?',#}
+        {#                            text: 'Essa operação é irreversível!',#}
+        {#                            icon: 'warning',#}
+        {#                            showCancelButton: true,#}
+        {#                            cancelButtonText: 'Cancelar!',#}
+        {#                            confirmButtonText: 'Sim, deletar serviço!',#}
+        {#                            cancelButtonColor: '#82868b',#}
+        {#                            confirmButtonColor: '#EA5455',#}
+        {#                            heightAuto: false#}
+        {#                        })#}
+        {#                        if result.isConfirmed trigger confirmed">#}
+        {#                <i class="lni-eraser"></i>#}
+        {##}
+        {##}
+        {#            </div>#}
+        {#        </div>#}
+    </td>
+</tr>

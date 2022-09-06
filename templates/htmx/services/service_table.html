@@ -1,0 +1,32 @@
+<div>
+    <table class="table border table-bordered text-dark table-hover table-striped mt-5">
+        <thead class="thead-light">
+        <tr>
+            <th
+                    hx-get="{% url 'service_table' %}?order=-id"
+                    hx-target="#table_place"
+            >ID
+            </th>
+            <th>Titulo</th>
+            <th>Descição</th>
+            <th>Ícone</th>
+            <th>Empresa</th>
+            <th>Usuario</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody id="ServiceBody">
+
+        {% for object in page_obj.object_list %}
+            {% include 'htmx/services/service_result.html' %}
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+        {#                    {% include 'pagination.html' %}#}
+
+        {% include 'htmx/pagination_htmx.html' %}
+    </div>
+</div>
+

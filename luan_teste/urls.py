@@ -26,6 +26,7 @@ urlpatterns = [
     path('clientes/', include('class.urls')),
     path('accounts/', include('allauth.urls')),
     path('fusion/', include('fusion.urls')),
+    path('htmx/', include('htmx.urls')),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

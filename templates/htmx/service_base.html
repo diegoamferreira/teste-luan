@@ -1,0 +1,35 @@
+{% extends 'htmx/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <img id="indicador_carregamento" class="position-absolute htmx-indicator"
+         style="left: 50%; top:100px; z-index: 1000; width: 80px; transform: translate(-50%, -50%)"
+         src="{% static 'svg-loaders/three-dots.svg' %}">
+
+    <div class="d-flex justify-content-around mt-2">
+    <span class="text-primary">
+        Aqui Estão os serviços oferecidos pela Fusion
+    </span>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
+        hx-get="{% url 'service_create' %}"
+        hx-target="#content-modal"
+        >
+            Criar novo serviço
+        </button>
+
+    </div>
+
+    <div id="table_place"
+         hx-get="{% url 'service_table' %}"
+         hx-trigger="load"
+         hx-indicator="#indicador_carregamento"
+    >
+    </div>
+
+
+    {% include 'htmx/services/create-modal.html' %}
+
+{% endblock content %}

@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'core',
     'class',
     'fusion',
-
+    'htmx',
 
     # 3rd party apps
     'allauth',

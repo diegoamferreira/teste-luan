@@ -1,0 +1,39 @@
+{% extends 'htmx/base.html' %}
+
+
+{% block content %}
+
+
+
+
+    <div>
+
+        <table class="table border table-bordered text-dark table-hover table-striped">
+            <thead class="thead-light">
+            <tr>
+                <th>Titulo</th>
+                <th>Descição</th>
+                <th>Ícone</th>
+                <th>Empresa</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for service in object_list %}
+                <tr>
+                    <td>{{ service.titulo }}</td>
+                    <td>{{ service.descricao }}</td>
+                    <td>{{ service.icone }}</td>
+                    <td>{{ service.empresa }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+            {% include 'pagination.html' %}
+        </div>
+
+    </div>
+
+{% endblock content %}
