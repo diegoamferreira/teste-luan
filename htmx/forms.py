@@ -7,7 +7,7 @@ class ServiceForm(forms.ModelForm):
 
     class Meta:
         model = Service
-        fields = '__all__'
+        fields = ['titulo', 'descricao', 'icone', 'empresa']
 
         widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control', 'autofocus': ''}),

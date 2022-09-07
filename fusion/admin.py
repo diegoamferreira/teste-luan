@@ -14,8 +14,8 @@ class FusionAdmin(admin.ModelAdmin):
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
       list_filter = ["titulo","descricao","empresa__cidade"]
-      list_display = ["id","titulo","descricao","get_empresaNome","icone"]
-      list_editable = ["titulo","icone"]
+      list_display = ["id","titulo","get_empresaNome","icone", 'status', 'liberado']
+      list_editable = ["titulo","icone", 'status', 'liberado']
       list_display_links = ["id"]
       # list_per_page = 1
       list_max_show_all = 10

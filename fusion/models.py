@@ -34,24 +34,34 @@ class Empresa(models.Model):
 
 
 class Service(models.Model):
-    titulo = models.CharField(max_length=100)
-    descricao = models.TextField(blank=True, null=True, )
-    icone = models.CharField(max_length=100, choices=ICONS_CHOICE)
-    empresa = models.ForeignKey(Empresa,on_delete=models.CASCADE,related_name="services")  # relaciona o registro da tabela com o registro da tabela  Empresa
+    STATUS_CHOICE = (
+        ('active', 'Ativo'),
+        ('deleted', 'Deletado'),
+        ('blocked', 'Bloqueado'),
+    )
+
+    titulo = models.CharField('Titulo', max_length=100)
+    descricao = models.TextField('Descrição', blank=True, null=True, )
+    icone = models.CharField('Ícone', max_length=100, choices=ICONS_CHOICE)
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name="services",
+                                verbose_name='Empresa')  # relaciona o registro da tabela com o registro da tabela  Empresa
+    liberado = models.BooleanField('Liberado', default=False)
+    status = models.CharField('Status', choices=STATUS_CHOICE, default=STATUS_CHOICE[0][0], max_length=11, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Serviço'
         verbose_name_plural = 'Serviços'
 
     def __str__(self):
-        return self.titulo + " " +self.descricao + " " +self.empresa.nome
+        return str(self.pk) + ' ' + self.titulo + " " + self.descricao + " " + self.empresa.nome
 
 
 class Resource(models.Model):
     titulo = models.CharField(max_length=100)
     descricao = models.TextField(blank=True, null=True)
     icone = models.CharField(max_length=100, choices=ICONS_CHOICE)
-    empresa = models.ForeignKey(Empresa,on_delete=models.CASCADE,related_name="resources")  # relaciona o registro da tabela com o registro da tabela  Empresa
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE,
+                                related_name="resources")  # relaciona o registro da tabela com o registro da tabela  Empresa
 
     class Meta:
         verbose_name = 'Recurso'
@@ -77,7 +87,7 @@ class Team(models.Model):
     facebook_url = models.URLField(blank=True, null=True)
     twitter_url = models.URLField(blank=True, null=True)
     instagran_url = models.URLField(blank=True, null=True)
-    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE,related_name="teams")
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name="teams")
 
     class Meta:
         verbose_name = 'Equipe'
@@ -91,7 +101,7 @@ class Plan(models.Model):
     preco = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
     titulo = models.TextField(max_length=100, blank=True, null=True)
     icone = models.CharField(max_length=100, choices=ICONS_CHOICE)
-    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE,related_name="plans")
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name="plans")
 
     class Meta:
         verbose_name = 'Plano'
@@ -108,7 +118,7 @@ class Speech(models.Model):
     mensagem = models.TextField(max_length=100)
     nota = models.SmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     nota2 = models.PositiveSmallIntegerField(validators=[MaxValueValidator(5)], default=0)
-    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE,related_name="speechs")
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name="speechs")
 
     class Meta:
         verbose_name = 'Depoimento'
@@ -123,7 +133,7 @@ class Contact(models.Model):
     email = models.EmailField(max_length=100, blank=True, null=True)
     assunto = models.TextField(max_length=100)
     mensagem = models.TextField(max_length=100)
-    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE,related_name="contacts")
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name="contacts")
 
     class Meta:
         verbose_name = 'Contato'
@@ -132,11 +142,10 @@ class Contact(models.Model):
     def __str__(self):
         return self.nome
 
+
 class Phone(models.Model):
     nome = models.CharField(max_length=100, blank=True, null=True)
     telefone = models.CharField(max_length=11, blank=True, null=True)
-
-
 
     class Meta:
         verbose_name = 'Telefone'

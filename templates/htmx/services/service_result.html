@@ -1,4 +1,24 @@
-<tr>
+<tr id="row_{{ object.pk }}"
+        {% if not object.liberado %}
+        hx-get="{% url 'service_result' pk=object.pk %}"
+        hx-trigger="every 2s"
+        hx-indicator="#indicador_carregamento"
+        hx-swap="outerHTML"
+        {% endif %}
+>
+
+    <td class="text-center">
+        {% if object.liberado %}
+            <div class="icon" style="font-size: 30px; color:blue">
+                <i class="lni-check-mark-circle"></i>
+            </div>
+        {% else %}
+            <div class="icon" style="font-size: 30px; color: red">
+                <i class="lni-close"></i>
+            </div>
+        {% endif %}
+
+    </td>
     <td>{{ object.id }}</td>
     <td>{{ object.titulo }}</td>
     <td>{{ object.descricao }}</td>
@@ -14,31 +34,24 @@
             DELETAR
         </button>
 
+        {% if object.liberado %}
+        <button type="button"
+                data-toggle="modal"
+                data-target="#contentModal"
+                hx-get="{% url 'service_update' pk=object.pk %}"
+                hx-target="#content-modal"
+        >
+            EDITAR
+        </button>
+        <button type="button"
+                data-toggle="modal"
+                data-target="#contentModal"
+                hx-get="{% url 'service_detail' pk=object.pk %}"
+                hx-target="#content-modal"
+        >
+            DETALHAR
+        </button>
+        {% endif %}
 
-        {#        <div class="services-item">#}
-        {#            <div class="icon"#}
-        {#                 data-bs-toggle="tooltip"#}
-        {#                 data-bs-original-title="Deletar Serviço"#}
-        {#                 hx-delete="{% url 'service_delete' object.pk %}"#}
-        {#                 hx-trigger='confirmed'#}
-        {#                 hx-target="closest tr"#}
-        {#                 _="on click#}
-        {#                         call Swal.fire({#}
-        {#                            title: 'Você tem certeza?',#}
-        {#                            text: 'Essa operação é irreversível!',#}
-        {#                            icon: 'warning',#}
-        {#                            showCancelButton: true,#}
-        {#                            cancelButtonText: 'Cancelar!',#}
-        {#                            confirmButtonText: 'Sim, deletar serviço!',#}
-        {#                            cancelButtonColor: '#82868b',#}
-        {#                            confirmButtonColor: '#EA5455',#}
-        {#                            heightAuto: false#}
-        {#                        })#}
-        {#                        if result.isConfirmed trigger confirmed">#}
-        {#                <i class="lni-eraser"></i>#}
-        {##}
-        {##}
-        {#            </div>#}
-        {#        </div>#}
     </td>
 </tr>

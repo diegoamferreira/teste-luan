@@ -3,11 +3,10 @@
 
         {% if page_obj.has_previous %}
             <li class="page-item">
-                <a class="page-link"
-                        hx-get="{% url 'service_table' %}?page={{ page_obj.previous_page_number }}"
-                        hx-target="#table_place"
-                        {#                hx-trigger="click"#}
-                        tabindex="-1">&laquo;</a>
+                <a class="page-link text-primary"
+                   hx-get="{% url 'service_table' %}?page={{ page_obj.previous_page_number }}"
+                   hx-target="#table_place"
+                   tabindex="-1">&laquo;</a>
             </li>
         {% else %}
             <li class="page-item disabled">
@@ -19,12 +18,12 @@
             {% if page_obj.number == i %}
 
                 <li class="page-item active">
-                    <a class="page-link" href="#">{{ i }}<span class="sr-only">(current)</span></a>
+                    <a class="page-link">{{ i }}<span class="sr-only">(current)</span></a>
                 </li>
 
             {% else %}
                 <li class="page-item">
-                    <a class="page-link"
+                    <a class="page-link text-primary"
                        hx-get="{% url 'service_table' %}?page={{ i }}"
                        hx-target="#table_place">
                         {{ i }}</a>
@@ -34,7 +33,7 @@
 
         {% if page_obj.has_next %}
             <li class="page-item">
-                <a class="page-link"
+                <a class="page-link text-primary"
                    hx-get="{% url 'service_table' %}?page={{ page_obj.next_page_number }}"
                    hx-target="#table_place">&raquo;</a>
             </li>
@@ -46,5 +45,3 @@
 
     </ul>
 </nav>
-
-

@@ -1,7 +1,14 @@
-<div>
-    <table class="table border table-bordered text-dark table-hover table-striped mt-5">
+<div
+{#        hx-get="{% url 'service_table' %}"#}
+{#        hx-trigger="every 2s"#}
+{#        hx-indicator="#indicador_carregamento"#}
+{#        hx-target="#table_place"#}
+>
+
+    <table class="table border table-bordered text-dark table-hover table-striped">
         <thead class="thead-light">
         <tr>
+            <th>Liberado</th>
             <th
                     hx-get="{% url 'service_table' %}?order=-id"
                     hx-target="#table_place"
@@ -24,9 +31,11 @@
         </tbody>
     </table>
     <div class="d-flex justify-content-center">
-        {#                    {% include 'pagination.html' %}#}
-
         {% include 'htmx/pagination_htmx.html' %}
     </div>
+
 </div>
+
+
+
 
