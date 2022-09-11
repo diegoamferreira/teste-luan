@@ -30,7 +30,7 @@
                 hx-delete="{% url 'service_delete' object.pk %}"
                 hx-confirm="Tem certeza que deseja deletar o serviço?"
                 hx-target="closest tr"
-        >
+                hx-swap="outerHTML swap:3s">
             DELETAR
         </button>
 

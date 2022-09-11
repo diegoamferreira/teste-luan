@@ -108,10 +108,9 @@ def service_result_view(request, pk):
     #     print(hx)
     # else:
     #     print('EU NÃO')
-    if 'Hx-Request' not in request.headers:
-        return HttpResponse(status=404)
+    # if 'Hx-Request' not in request.headers:
+    #     return HttpResponse(status=404)
 
-    obj = Service.objects.get(pk=pk)
     template_name = 'htmx/services/service_result.html'
     context = {'object': obj}
     return render(request, template_name, context)
